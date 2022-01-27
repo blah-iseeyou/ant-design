@@ -58,7 +58,7 @@ module.exports = {
   lessConfig: {
     javascriptEnabled: true,
     modifyVars: {
-      'root-entry-name': ANT_THEME || DEV_THEME || 'variable',
+      'root-entry-name': 'default',
     },
   },
   webpackConfig(config) {

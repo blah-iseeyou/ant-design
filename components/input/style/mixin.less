@@ -7,10 +7,14 @@
 .input-lg() {
   padding: @input-padding-vertical-lg @input-padding-horizontal-lg;
   font-size: @font-size-lg;
+
+  // box-shadow: none;
+  box-shadow: @shadow-custom;
 }
 
 .input-sm() {
   padding: @input-padding-vertical-sm @input-padding-horizontal-sm;
+  box-shadow: @shadow-custom;
 }
 
 // input status
@@ -67,7 +71,12 @@
   background-image: none;
   border: @border-width-base @border-style-base @input-border-color;
   border-radius: @border-radius-base;
+
+  box-shadow: @shadow-custom;
   transition: all 0.3s;
+  .@{ant-prefix}-input {
+    box-shadow: none;
+  }
   .placeholder(); // Reset placeholder
 
   &:hover {
@@ -88,6 +97,7 @@
   }
 
   &-borderless {
+    box-shadow: none !important;
     &,
     &:hover,
     &:focus,
@@ -96,7 +106,6 @@
     &[disabled] {
       background-color: transparent;
       border: none;
-      box-shadow: none;
     }
   }
 
@@ -113,10 +122,17 @@
   // Size
   &-lg {
     .input-lg();
+    // box-shadow: -0.5px -0.5px 1px 1px rgb(50 50 71 / 2%), 1px 1px 3px 0px rgb(50 50 71 / 8%);
+    .@{ant-prefix}-input {
+      box-shadow: none;
+    }
   }
 
   &-sm {
     .input-sm();
+    .@{ant-prefix}-input {
+      box-shadow: none;
+    }
   }
 }
 
@@ -127,6 +143,13 @@
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
+
+  // ant-input-wrapper ant-input-group
+  // ant-
+  :not(.@{ant-prefix}-input-affix-wrapper) .@{ant-prefix}-input,
+  .@{ant-prefix}-input-search .@{ant-prefix}-input-group .@{ant-prefix}-input {
+    box-shadow: @shadow-custom;
+  }
 
   // Undo padding and float of grid classes
   &[class*='col-'] {
@@ -203,8 +226,9 @@
       &.@{ant-prefix}-select-single:not(.@{ant-prefix}-select-customize-input)
         .@{ant-prefix}-select-selector {
         background-color: inherit;
-        border: @border-width-base @border-style-base transparent;
-        box-shadow: none;
+        border: none !important;
+        // border: @border-style-none;//@border-width-base @border-style-base transparent;
+        // box-shadow: none;
       }
 
       &-open,
@@ -222,7 +246,7 @@
       .@{ant-prefix}-cascader-input {
         text-align: left;
         border: 0;
-        box-shadow: none;
+        // box-shadow: none;
       }
     }
   }
@@ -244,6 +268,7 @@
     &:not(:first-child) .@{inputClass} {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+      // box-shadow: none;
     }
 
     &:not(:last-child) .@{inputClass} {
@@ -276,6 +301,8 @@
   &-lg .@{inputClass},
   &-lg > &-addon {
     .input-lg();
+    // box-shadow: -0.5px -0.5px 1px 1px rgb(50 50 71 / 2%), 1px 1px 3px 0px rgb(50 50 71 / 8%);
+    box-shadow: none;
   }
 
   &-sm .@{inputClass},

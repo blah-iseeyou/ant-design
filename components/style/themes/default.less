@@ -1,6 +1,9 @@
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 @import '../color/colors';
 
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @theme: default;
 
 // The prefix to use on all css classes from ant.
@@ -14,7 +17,7 @@
 
 // -------- Colors -----------
 // >>> Primary
-@primary-color: @blue-6;
+@primary-color: #01080F;
 @primary-color-hover: color(~`colorPalette('@{primary-color}', 5) `);
 @primary-color-active: color(~`colorPalette('@{primary-color}', 7) `);
 @primary-color-outline: fade(@primary-color, @outline-fade);
@@ -57,7 +60,7 @@
 
 // Color used by default to control hover and active backgrounds and for
 // alert info backgrounds.
-@primary-1: color(~`colorPalette('@{primary-color}', 1) `); // replace tint(@primary-color, 90%)
+@primary-1: fade(@primary-color, 20%);//color(~`colorPalette('@{primary-color}', 1) `); // replace tint(@primary-color, 90%)
 @primary-2: color(~`colorPalette('@{primary-color}', 2) `); // replace tint(@primary-color, 80%)
 @primary-3: color(~`colorPalette('@{primary-color}', 3) `); // unused
 @primary-4: color(~`colorPalette('@{primary-color}', 4) `); // unused
@@ -74,15 +77,20 @@
 // ---
 
 // Background color for `<body>`
-@body-background: #fff;
+@body-background: #F7FAFC;
 // Base background color for most components
-@component-background: #fff;
+
+@component-background: #F7FAFC;
+@base-background: #FFF;
+
 // Popover background color
-@popover-background: @component-background;
+@popover-background: @base-background;
 @popover-customize-border-color: @border-color-split;
-@font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-  'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-  'Noto Color Emoji';
+
+@font-family: 'Inter', sans-serif;
+// @font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+//   'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+//   'Noto Color Emoji';
 @code-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 @text-color: fade(@black, 85%);
 @text-color-secondary: fade(@black, 45%);
@@ -105,7 +113,7 @@
 @heading-5-size: ceil(@font-size-base * 1.14);
 // https://github.com/ant-design/ant-design/issues/20210
 @line-height-base: 1.5715;
-@border-radius-base: 2px;
+@border-radius-base: 3px;
 @border-radius-sm: @border-radius-base;
 
 // vertical paddings
@@ -170,6 +178,7 @@
 @border-color-inverse: @white;
 @border-width-base: 1px; // width of the border for a component
 @border-style-base: solid; // style of a components border
+@border-color-none: transparent;
 
 // Outline
 @outline-blur-size: 0;
@@ -188,7 +197,7 @@
 
 // Shadow
 @shadow-color: rgba(0, 0, 0, 0.15);
-@shadow-color-inverse: @component-background;
+@shadow-color-inverse: @base-background;
 @box-shadow-base: @shadow-2;
 @shadow-1-up: 0 -6px 16px -8px rgba(0, 0, 0, 0.08), 0 -9px 28px 0 rgba(0, 0, 0, 0.05),
   0 -12px 48px 16px rgba(0, 0, 0, 0.03);
@@ -200,6 +209,9 @@
   12px 0 48px 16px rgba(0, 0, 0, 0.03);
 @shadow-2: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08),
   0 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+@shadow-custom: -0.5px -0.5px 1px 1px rgb(50 50 71 / 2%), 1px 1px 3px 0px rgb(50 50 71 / 8%);
+
 
 // Buttons
 @btn-font-weight: 400;
@@ -215,7 +227,7 @@
 @btn-primary-bg: @primary-color;
 
 @btn-default-color: @text-color;
-@btn-default-bg: @component-background;
+@btn-default-bg: @base-background;
 @btn-default-border: @border-color-base;
 
 @btn-danger-color: #fff;
@@ -226,9 +238,9 @@
 @btn-disable-bg: @disabled-bg;
 @btn-disable-border: @border-color-base;
 
-@btn-default-ghost-color: @component-background;
+@btn-default-ghost-color: @base-background;
 @btn-default-ghost-bg: transparent;
-@btn-default-ghost-border: @component-background;
+@btn-default-ghost-border: @base-background;
 
 @btn-font-size-lg: @font-size-lg;
 @btn-font-size-sm: @font-size-base;
@@ -286,7 +298,7 @@
 
 // Dropdown
 @dropdown-selected-color: @primary-color;
-@dropdown-menu-submenu-disabled-bg: @component-background;
+@dropdown-menu-submenu-disabled-bg: @base-background;
 
 // Empty
 @empty-font-size: @font-size-base;
@@ -298,7 +310,7 @@
 @radio-dot-size: @radio-size - 8px;
 @radio-dot-color: @primary-color;
 @radio-dot-disabled-color: fade(@black, 20%);
-@radio-solid-checked-color: @component-background;
+@radio-solid-checked-color: @base-background;
 
 // Radio buttons
 @radio-button-bg: @btn-default-bg;
@@ -393,7 +405,7 @@
 @collapse-panel-border-radius: @border-radius-base;
 
 //Dropdown
-@dropdown-menu-bg: @component-background;
+@dropdown-menu-bg: @base-background;
 @dropdown-vertical-padding: 5px;
 @dropdown-edge-child-vertical-padding: 4px;
 @dropdown-font-size: @font-size-base;
@@ -423,54 +435,56 @@
 @input-padding-horizontal-base: @input-padding-horizontal;
 @input-padding-horizontal-sm: @control-padding-horizontal-sm - 1px;
 @input-padding-horizontal-lg: @input-padding-horizontal;
+
 @input-padding-vertical-base: max(
   (round(((@input-height-base - @font-size-base * @line-height-base) / 2) * 10) / 10) -
     @border-width-base,
   3px
 );
+
 @input-padding-vertical-sm: max(
   (round(((@input-height-sm - @font-size-base * @line-height-base) / 2) * 10) / 10) -
     @border-width-base,
   0
 );
+
 @input-padding-vertical-lg: (
     ceil(((@input-height-lg - @font-size-lg * @line-height-base) / 2) * 10) / 10
   ) - @border-width-base;
+
 @input-placeholder-color: hsv(0, 0, 75%);
 @input-color: @text-color;
 @input-icon-color: @input-color;
-@input-border-color: @border-color-base;
-@input-bg: @component-background;
+@input-border-color: @border-color-none;
+@input-bg: @base-background;
 @input-number-hover-border-color: @input-hover-border-color;
 @input-number-handler-active-bg: #f4f4f4;
 @input-number-handler-hover-bg: @primary-5;
-@input-number-handler-bg: @component-background;
+@input-number-handler-bg: @base-background;
 @input-number-handler-border-color: @border-color-base;
 @input-addon-bg: @background-color-light;
-@input-hover-border-color: @primary-5;
+@input-hover-border-color: @primary-2;
 @input-disabled-bg: @disabled-bg;
 @input-outline-offset: 0 0;
 @input-icon-hover-color: fade(@black, 85%);
 @input-disabled-color: @disabled-color;
 
 // Mentions
-// ---
-@mentions-dropdown-bg: @component-background;
+@mentions-dropdown-bg: @base-background;
 @mentions-dropdown-menu-item-hover-bg: @mentions-dropdown-bg;
 
 // Select
-// ---
-@select-border-color: @border-color-base;
+@select-border-color: @border-color-none;
 @select-item-selected-color: @text-color;
 @select-item-selected-font-weight: 600;
-@select-dropdown-bg: @component-background;
+@select-dropdown-bg: @base-background;
 @select-item-selected-bg: @primary-1;
 @select-item-active-bg: @item-hover-bg;
 @select-dropdown-vertical-padding: @dropdown-vertical-padding;
 @select-dropdown-font-size: @dropdown-font-size;
 @select-dropdown-line-height: @dropdown-line-height;
 @select-dropdown-height: 32px;
-@select-background: @component-background;
+@select-background: @base-background;
 @select-clear-background: @select-background;
 @select-selection-item-bg: @background-color-base;
 @select-selection-item-border-color: @border-color-split;
@@ -484,9 +498,9 @@
 
 // Cascader
 // ---
-@cascader-bg: @component-background;
+@cascader-bg: @base-background;
 @cascader-item-selected-bg: @primary-1;
-@cascader-menu-bg: @component-background;
+@cascader-menu-bg: @base-background;
 @cascader-menu-border-color-split: @border-color-split;
 
 // Cascader
@@ -522,7 +536,7 @@
 // Popover
 // ---
 // Popover body background color
-@popover-bg: @component-background;
+@popover-bg: @base-background;
 // Popover text color
 @popover-color: @text-color;
 // Popover maximum width
@@ -544,7 +558,7 @@
 @modal-header-padding-vertical: @padding-md;
 @modal-header-padding-horizontal: @padding-lg;
 @modal-body-padding: @padding-lg;
-@modal-header-bg: @component-background;
+@modal-header-bg: @base-background;
 @modal-header-padding: @modal-header-padding-vertical @modal-header-padding-horizontal;
 @modal-header-border-width: @border-width-base;
 @modal-header-border-style: @border-style-base;
@@ -552,7 +566,7 @@
 @modal-header-title-font-size: @font-size-lg;
 @modal-header-border-color-split: @border-color-split;
 @modal-header-close-size: 56px;
-@modal-content-bg: @component-background;
+@modal-content-bg: @base-background;
 @modal-heading-color: @heading-color;
 @modal-close-color: @text-color-secondary;
 @modal-footer-bg: transparent;
@@ -621,7 +635,7 @@
 
 // Table
 // --
-@table-bg: @component-background;
+@table-bg: @base-background;
 @table-header-bg: @background-color-light;
 @table-header-color: @heading-color;
 @table-header-sort-bg: @background-color-base;
@@ -655,8 +669,8 @@
 // Filter
 @table-header-filter-active-bg: rgba(0, 0, 0, 0.04);
 @table-filter-btns-bg: inherit;
-@table-filter-dropdown-bg: @component-background;
-@table-expand-icon-bg: @component-background;
+@table-filter-dropdown-bg: @base-background;
+@table-expand-icon-bg: @base-background;
 @table-selection-column-width: 32px;
 // Sticky
 @table-sticky-scroll-bar-bg: fade(#000, 35%);
@@ -671,7 +685,7 @@
 
 // TimePicker
 // ---
-@picker-bg: @component-background;
+@picker-bg: @base-background;
 @picker-basic-cell-hover-color: @item-hover-bg;
 @picker-basic-cell-active-with-range-color: @primary-1;
 @picker-basic-cell-hover-with-range-color: lighten(@primary-color, 35%);
@@ -689,7 +703,7 @@
 
 // Calendar
 // ---
-@calendar-bg: @component-background;
+@calendar-bg: @base-background;
 @calendar-input-bg: @input-bg;
 @calendar-border-color: @border-color-inverse;
 @calendar-item-active-bg: @item-active-bg;
@@ -712,7 +726,7 @@
 @badge-font-size-sm: @font-size-sm;
 @badge-font-weight: normal;
 @badge-status-size: 6px;
-@badge-text-color: @component-background;
+@badge-text-color: @base-background;
 @badge-color: @highlight-color;
 
 // Rate
@@ -735,10 +749,10 @@
 @card-inner-head-padding: 12px;
 @card-padding-base: 24px;
 @card-padding-base-sm: (@card-padding-base / 2);
-@card-actions-background: @component-background;
+@card-actions-background: @base-background;
 @card-actions-li-margin: 12px 0;
 @card-skeleton-bg: #cfd8dc;
-@card-background: @component-background;
+@card-background: @base-background;
 @card-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12),
   0 5px 12px 4px rgba(0, 0, 0, 0.09);
 @card-radius: @border-radius-base;
@@ -819,7 +833,7 @@
 @switch-sm-min-width: 28px;
 @switch-disabled-opacity: 0.4;
 @switch-color: @primary-color;
-@switch-bg: @component-background;
+@switch-bg: @base-background;
 @switch-shadow-color: fade(#00230b, 20%);
 @switch-padding: 2px;
 @switch-inner-margin-min: ceil(@switch-height * 0.3);
@@ -829,16 +843,16 @@
 
 // Pagination
 // ---
-@pagination-item-bg: @component-background;
+@pagination-item-bg: @base-background;
 @pagination-item-size: @height-base;
 @pagination-item-size-sm: 24px;
 @pagination-font-family: @font-family;
 @pagination-font-weight-active: 500;
-@pagination-item-bg-active: @component-background;
-@pagination-item-link-bg: @component-background;
+@pagination-item-bg-active: @base-background;
+@pagination-item-link-bg: @base-background;
 @pagination-item-disabled-color-active: @disabled-color;
 @pagination-item-disabled-bg-active: @disabled-active-bg;
-@pagination-item-input-bg: @component-background;
+@pagination-item-input-bg: @base-background;
 @pagination-mini-options-size-changer-top: 0px;
 
 // PageHeader
@@ -872,7 +886,7 @@
 @slider-track-background-color: @primary-3;
 @slider-track-background-color-hover: @primary-4;
 @slider-handle-border-width: 2px;
-@slider-handle-background-color: @component-background;
+@slider-handle-background-color: @base-background;
 @slider-handle-color: @primary-3;
 @slider-handle-color-hover: @primary-4;
 @slider-handle-color-focus: tint(@primary-color, 20%);
@@ -884,11 +898,11 @@
 @slider-dot-border-color: @border-color-split;
 @slider-dot-border-color-active: tint(@primary-color, 50%);
 @slider-disabled-color: @disabled-color;
-@slider-disabled-background-color: @component-background;
+@slider-disabled-background-color: @base-background;
 
 // Tree
 // ---
-@tree-bg: @component-background;
+@tree-bg: @base-background;
 @tree-title-height: 24px;
 @tree-child-padding: 18px;
 @tree-directory-selected-color: #fff;
@@ -902,7 +916,7 @@
 @collapse-header-padding-extra: 40px;
 @collapse-header-bg: @background-color-light;
 @collapse-content-padding: @padding-md;
-@collapse-content-bg: @component-background;
+@collapse-content-bg: @base-background;
 @collapse-header-arrow-left: 16px;
 
 // Skeleton
@@ -929,7 +943,7 @@
 // Message
 // ---
 @message-notice-content-padding: 10px 16px;
-@message-notice-content-bg: @component-background;
+@message-notice-content-bg: @base-background;
 // Motion
 // ---
 @wave-animation-width: 6px;
@@ -971,7 +985,7 @@
 @list-item-meta-margin-bottom: @padding-md;
 @list-item-meta-avatar-margin-right: @padding-md;
 @list-item-meta-title-margin-bottom: @padding-sm;
-@list-customize-card-bg: @component-background;
+@list-customize-card-bg: @base-background;
 @list-item-meta-description-font-size: @font-size-base;
 
 // Statistic
@@ -985,7 +999,7 @@
 // ---
 @drawer-header-padding: @padding-md @padding-lg;
 @drawer-body-padding: @padding-lg;
-@drawer-bg: @component-background;
+@drawer-bg: @base-background;
 @drawer-footer-padding-vertical: @modal-footer-padding-vertical;
 @drawer-footer-padding-horizontal: @modal-footer-padding-horizontal;
 @drawer-header-close-size: 56px;
@@ -996,7 +1010,7 @@
 @timeline-color: @border-color-split;
 @timeline-dot-border-width: 2px;
 @timeline-dot-color: @primary-color;
-@timeline-dot-bg: @component-background;
+@timeline-dot-bg: @base-background;
 @timeline-item-padding-bottom: 20px;
 
 // Typography
@@ -1013,7 +1027,7 @@
 // ---
 @process-tail-color: @border-color-split;
 @steps-nav-arrow-color: fade(@black, 25%);
-@steps-background: @component-background;
+@steps-background: @base-background;
 @steps-icon-size: 32px;
 @steps-icon-custom-size: @steps-icon-size;
 @steps-icon-custom-top: 0px;
@@ -1035,7 +1049,7 @@
 
 // Notification
 // ---
-@notification-bg: @component-background;
+@notification-bg: @base-background;
 @notification-padding-vertical: 16px;
 @notification-padding-horizontal: 24px;
 

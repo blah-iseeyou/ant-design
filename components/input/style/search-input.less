@@ -7,6 +7,7 @@
 
 .@{search-prefix} {
   .@{ant-prefix}-input {
+
     &:hover,
     &:focus {
       border-color: @input-hover-border-color;
@@ -19,6 +20,12 @@
 
   .@{ant-prefix}-input-affix-wrapper {
     border-radius: 0;
+
+    .@{ant-prefix}-input{
+      // box-shadow: -0.5px -0.5px 1px 1px rgb(50 50 71 / 2%), 1px 1px 3px 0px rgb(50 50 71 / 8%);
+      box-shadow: none !important;
+    }
+
   }
 
   // fix slight height diff in Firefox:
