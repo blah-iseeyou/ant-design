@@ -1,0 +1,10 @@
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable */
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+.ant-picker {
+  box-shadow: -0.5px -0.5px 1px 1px rgba(50, 50, 71, 0.02), 1px 1px 3px 0px rgba(50, 50, 71, 0.08) !important;
+}
+.ant-picker .ant-picker-input > input {
+  box-shadow: none !important;
+}

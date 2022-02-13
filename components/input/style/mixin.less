@@ -7,10 +7,12 @@
 .input-lg() {
   padding: @input-padding-vertical-lg @input-padding-horizontal-lg;
   font-size: @font-size-lg;
+  box-shadow: @input-shadow;
 }
 
 .input-sm() {
   padding: @input-padding-vertical-sm @input-padding-horizontal-sm;
+  box-shadow: @input-shadow;
 }
 
 // input status
@@ -67,8 +69,13 @@
   background-image: none;
   border: @border-width-base @border-style-base @input-border-color;
   border-radius: @border-radius-base;
+  box-shadow: @input-shadow;
   transition: all 0.3s;
   .placeholder(); // Reset placeholder
+
+  .@{ant-prefix}-input {
+    box-shadow: none;
+  }
 
   &:hover {
     .hover();
@@ -88,6 +95,8 @@
   }
 
   &-borderless {
+    box-shadow: none !important;
+
     &,
     &:hover,
     &:focus,
@@ -113,10 +122,16 @@
   // Size
   &-lg {
     .input-lg();
+    .@{ant-prefix}-input {
+      box-shadow: none;
+    }
   }
 
   &-sm {
     .input-sm();
+    .@{ant-prefix}-input {
+      box-shadow: none;
+    }
   }
 }
 
@@ -127,6 +142,11 @@
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
+
+  :not(.@{ant-prefix}-input-affix-wrapper) .@{ant-prefix}-input,
+  .@{ant-prefix}-input-search .@{ant-prefix}-input-group .@{ant-prefix}-input {
+    box-shadow: @input-shadow;
+  }
 
   // Undo padding and float of grid classes
   &[class*='col-'] {
@@ -276,11 +296,13 @@
   &-lg .@{inputClass},
   &-lg > &-addon {
     .input-lg();
+    box-shadow: none;
   }
 
   &-sm .@{inputClass},
   &-sm > &-addon {
     .input-sm();
+    box-shadow: none;
   }
 
   // Fix https://github.com/ant-design/ant-design/issues/5754
